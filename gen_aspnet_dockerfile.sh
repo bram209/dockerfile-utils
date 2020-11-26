@@ -10,6 +10,7 @@ function get_references() {
 	fi
 }
 
+# TODO: Replace with upsearch function or make script executable from sln root
 ROOT_DIR=$(git rev-parse --show-toplevel)
 echo "Root dir: $ROOT_DIR"
 
