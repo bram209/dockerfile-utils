@@ -1,7 +1,6 @@
 #!/bin/bash
 
 read -p "Do you wish to see the content of this script before execution?" -n 1 -r
-echo
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
