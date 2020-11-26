@@ -15,7 +15,7 @@ ROOT_DIR=$(git rev-parse --show-toplevel)
 echo "Root dir: $ROOT_DIR"
 
 echo "Searching for references..."
-all_references=$(get_references "$(pwd)/$(find *.csproj)" | xargs -n1 realpath --relative-to $ROOT_DIR | sort | uniq | tac)
+all_references=$(get_references "$(pwd)/$(find *.csproj)" | xargs -n1 realpath --relative-to $ROOT_DIR | awk '!x[$0]++' | tac)
 
 echo "$all_references"
 
@@ -68,7 +68,7 @@ RUN dotnet restore "$project_file"
 $(echo "$all_references" | while read line ; do echo "COPY [\"$(dirname $line)\", \"$(dirname $line)\"]" ; done )
 
 WORKDIR "/src/$(dirname $project_file)"
-RUN dotnet build "$project_filename)" -c Release -o /app/build
+RUN dotnet build "$project_filename" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "$project_filename" -c Release -o /app/publish
