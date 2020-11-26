@@ -21,7 +21,7 @@ echo "$all_references"
 
 printf "\n\nGenerating Dockerfile...\n--------------------------------\n"
 
-project_file=$(echo "$all_references" | head -n 1)
+project_file=$(echo "$all_references" | tail -n 1)
 project_filename=$(basename $project_file)
 
 cat > ./.dockerignore <<-EOF
