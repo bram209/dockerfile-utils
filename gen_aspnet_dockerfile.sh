@@ -15,7 +15,7 @@ ROOT_DIR=$(git rev-parse --show-toplevel)
 echo "Root dir: $ROOT_DIR"
 
 echo "Searching for references..."
-all_references=$(get_references "$(pwd)/$(find *.csproj)" | xargs -n1 realpath --relative-to $ROOT_DIR | tac)
+all_references=$(get_references "$(pwd)/$(find *.csproj)" | xargs -n1 realpath --relative-to $ROOT_DIR | sort | uniq | tac)
 
 echo "$all_references"
 
