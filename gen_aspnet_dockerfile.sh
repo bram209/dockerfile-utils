@@ -81,3 +81,4 @@ EOF
 
 cat ./Dockerfile
 printf "\n--------------------------------\nWritten to: $(realpath ./Dockerfile)\n"
+exit 0
