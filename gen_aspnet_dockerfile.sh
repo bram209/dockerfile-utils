@@ -61,7 +61,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 
-$(echo "$all_references" | while read line ; do echo "COPY [\"$line\", \"$(dirname $line)\"]" ; done )
+$(echo "$all_references" | while read line ; do echo "COPY [\"$line\", \"$(dirname $line)/\"]" ; done )
 
 RUN dotnet restore "$project_file"
 
